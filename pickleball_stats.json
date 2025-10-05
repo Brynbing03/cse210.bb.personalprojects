@@ -1,0 +1,38 @@
+{
+    "Bryn-Dawg": [
+        {
+            "my_score": 11,
+            "opponent_score": 8,
+            "result": "Win"
+        },
+        {
+            "my_score": 11,
+            "opponent_score": 3,
+            "result": "Win"
+        },
+        {
+            "my_score": 7,
+            "opponent_score": 11,
+            "result": "Loss"
+        }
+    ],
+    "Jobo": [
+        {
+            "my_score": 11,
+            "opponent_score": 7,
+            "result": "Win"
+        },
+        {
+            "my_score": 3,
+            "opponent_score": 11,
+            "result": "Loss"
+        }
+    ],
+    "Jeeein": [
+        {
+            "my_score": 11,
+            "opponent_score": 5,
+            "result": "Win"
+        }
+    ]
+}
