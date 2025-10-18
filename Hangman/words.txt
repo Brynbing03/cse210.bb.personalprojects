@@ -1,0 +1,10 @@
+I can add a bunch of words into this for the hangman game!
+
+apple
+banana
+computer
+hangman
+orange
+pencil
+program
+kachow

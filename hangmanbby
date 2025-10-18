@@ -1,0 +1,107 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+#include <algorithm>
+
+using namespace std;
+
+class HangmanGame {
+private:
+    string word;
+    string display;
+    vector<char> guessedLetters;
+    int maxTries;
+    int triesLeft;
+
+public:
+    // Constructor
+    HangmanGame(string w, int maxT = 6) {
+        word = w;
+        display = string(word.size(), '_');
+        maxTries = maxT;
+        triesLeft = maxTries;
+    }
+
+    // Function to show current word progress
+    void showWord() {
+        cout << "Word: " << display << endl;
+    }
+
+    // Function to check a letter guess
+    void guessLetter(char letter) {
+        letter = tolower(letter);
+        if (find(guessedLetters.begin(), guessedLetters.end(), letter) != guessedLetters.end()) {
+            cout << "You already guessed that letter!\n";
+            return;
+        }
+
+        guessedLetters.push_back(letter);
+
+        bool correct = false;
+        for (size_t i = 0; i < word.size(); i++) {
+            if (tolower(word[i]) == letter) {
+                display[i] = word[i];
+                correct = true;
+            }
+        }
+
+        if (!correct) {
+            triesLeft--;
+            cout << "Wrong guess! Tries left: " << triesLeft << endl;
+        } else {
+            cout << "Good guess!\n";
+        }
+    }
+
+    // Check if game is won
+    bool isWon() {
+        return display == word;
+    }
+
+    // Check if game is over
+    bool isLost() {
+        return triesLeft <= 0;
+    }
+};
+
+// Function to load words from file (Stretch: File I/O)
+vector<string> loadWords(string filename) {
+    vector<string> words;
+    ifstream file(filename);
+    string line;
+    while (getline(file, line)) {
+        if (!line.empty()) words.push_back(line);
+    }
+    return words;
+}
+
+int main() {
+    vector<string> wordList = loadWords("words.txt");
+
+    if (wordList.empty()) {
+        cout << "No words found in file. Using default word.\n";
+        wordList.push_back("programming");
+    }
+
+    string secretWord = wordList[rand() % wordList.size()];
+    HangmanGame game(secretWord);
+
+    cout << "Welcome to Hangman!\n";
+
+    while (!game.isWon() && !game.isLost()) {
+        game.showWord();
+        cout << "Enter a letter: ";
+        char guess;
+        cin >> guess;
+        game.guessLetter(guess);
+    }
+
+    if (game.isWon()) {
+        cout << "🎉 Congratulations! You guessed the word: " << secretWord << endl;
+    } else {
+        cout << "💀 Game Over! The word was: " << secretWord << endl;
+    }
+
+    return 0;
+}
