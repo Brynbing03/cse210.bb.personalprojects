@@ -1,0 +1,376 @@
+   :root {
+    --bg-light: #fdf7ee;
+    --bg-medium: #f3e7d4;
+    --text-main: #6d5b47;
+    --text-muted: #8a7b66;
+    --accent: #a9bf86; /* soft green */
+    --accent-dark: #7d9460;
+  
+    --shadow-soft: 0 8px 25px rgba(0, 0, 0, 0.12);
+    --radius-card: 18px;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    margin: 0;
+    font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+  }
+  
+  .section {
+    padding: 4.5rem 1.5rem;
+  }
+  
+  .section-light {
+    background-color: var(--bg-light);
+  }
+  
+  .section-medium {
+    background-color: var(--bg-medium);
+  }
+  
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-family: "Playfair Display", serif;
+    font-size: 3rem;
+    margin: 0 0 3rem;
+    text-align: center;
+    color: var(--text-main);
+    /* Outline-ish feel like original */
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.18);
+  }
+  
+/* top navigation bar */
+  
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #fef8f1ec;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(10px);
+  }
+  
+  .nav-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 1.5rem;
+  }
+  
+  .nav-link {
+    font-family: "Playfair Display", serif;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--text-main);
+    position: relative;
+    padding-bottom: 0.2rem;
+  }
+  
+  .nav-link:hover {
+    color: var(--accent-dark);
+  }
+  
+  .nav-link.active {
+    color: var(--accent-dark);
+  }
+  
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    border-radius: 999px;
+    background-color: var(--accent);
+  }
+  
+  /* hero part */
+  
+  .hero {
+    height: 70vh;
+    min-height: 420px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-image: url("canada.jpeg");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.4)
+    );
+  }
+  
+  .hero-overlay {
+    position: relative;
+    text-align: center;
+    color: #fdfdfd;
+    padding: 0 1.5rem;
+  }
+  
+  .hero-name {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    margin: 0 0 0.8rem;
+  }
+  
+  .hero-tagline {
+    font-size: 1.3rem;
+    margin: 0 0 2rem;
+  }
+  
+  .hero-button {
+    display: inline-block;
+    padding: 0.9rem 2.6rem;
+    border-radius: 999px;
+    background-color: var(--accent);
+    color: #f5f8f2;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border: 2px solid #dde6cb;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .hero-button:hover {
+    background-color: var(--accent-dark);
+  }
+  
+ /* about section */
+  .about-main {
+    display: grid;
+    grid-template-columns: minmax(0, 250px) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+    margin-bottom: 3.5rem;
+  }
+  
+  .about-photo-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .about-photo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .about-text p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  
+  /* Skills section */
+  .skills-section {
+    margin-top: 1rem;
+  }
+  
+  .skills-heading {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+    text-align: left;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .skill-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-card);
+    padding: 1.7rem 1.3rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .skill-name {
+    font-size: 1.1rem;
+    color: var(--text-main);
+  }
+  
+ /* experience section */
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  
+  .experience-item {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 1.2rem;
+  }
+  
+  .experience-bullet {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 2px solid var(--text-main);
+    margin-top: 8px;
+  }
+  
+  .experience-role {
+    font-family: "Playfair Display", serif;
+    font-size: 1.6rem;
+    margin: 0 0 0.2rem;
+  }
+  
+  .experience-meta {
+    margin: 0 0 0.6rem;
+    font-size: 0.9rem;
+    color: var(--accent-dark);
+  }
+  
+  .experience-description {
+    margin: 0;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  
+/* this is the projects section*/
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 2rem;
+  }
+  
+  .project-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    padding: 2.3rem 1.7rem;
+    text-align: center;
+  }
+  
+  .project-title {
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+    margin: 0 0 0.8rem;
+    color: var(--text-main);
+  }
+  
+  .project-tech {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+  
+  .project-date {
+    margin: 0.3rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  
+/* contact at the bottom styling */
+  .contact-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 1.5rem;
+  }
+  
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  
+  .contact-icon-placeholder {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    background-color: #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #ffffff;
+  }
+  
+  .contact-label {
+    text-decoration: none;
+    color: var(--text-main);
+  }
+  
+  .contact-label:hover {
+    text-decoration: underline;
+  }
+  
+/* footer */
+  .footer {
+    text-align: center;
+    padding: 1.8rem 1rem 2.3rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    background-color: #f9f0e5;
+  }
+  
+/* i made it so it would work on different screen sizes */
+  @media (max-width: 800px) {
+    .about-main {
+      grid-template-columns: minmax(0, 1fr);
+      text-align: center;
+    }
+  
+    .skills-heading {
+      text-align: center;
+    }
+  
+    .experience-item {
+      grid-template-columns: 24px minmax(0, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .nav-inner {
+      padding-inline: 1rem;
+      justify-content: space-between;
+    }
+  
+    .nav-link {
+      font-size: 1.1rem;
+    }
+  
+    .section-title {
+      font-size: 2.4rem;
+    }
+  }
+  
